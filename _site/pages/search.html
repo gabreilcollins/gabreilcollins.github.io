@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>搜索-Gabe Blog</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="content-language" content="zh-CN" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="google-site-verification" content="ckhUaoa05QCmWoE1FafzTBcqYI4yBOy-UJKopXDS18M" />
+  <meta name="author" content="Gabe" />
+  <meta name="description" content="Gabe的个人博客"/>
+  <meta name="keywords" content="Gabe,C,C++,Python,CTF"/>
+  <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="/static/css/common.css?t=20210125180116">
+  <link rel="stylesheet" href="/static/css/page.css?t=20210125180116">
+</head>
+<body ondragstart="return false;">
+<header class="header select-none">
+  <img class="logo" src="/static/img/logo.jpg" />
+  <nav class="menu">
+    <a href="/" class="hover-underline">首页</a>
+    <a href="/pages/categories.html" class="hover-underline">归类</a>
+    <a href="/pages/search.html" class="hover-underline">搜索</a>
+    <a href="/pages/links.html" class="hover-underline">友链</a>
+    <a href="/pages/chat.html" class="hover-underline">留言</a>
+    <a href="/pages/about.html" class="hover-underline">关于</a>
+    </nav>
+</header>
+<div class="page page-search">
+  <input id="search-input" type="text" placeholder="请在这里输入关键词^_^"></input>
+  <h1>
+    <span>搜索结果</span>
+    <img src="/static/img/loading.svg">
+  </h1>
+  <ul class="list-search">
+    <li hidden>
+      <a href="/posts/2021/01/18/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8.html">
+        <p class="title">Web应用程序漏洞利用</p>
+        <p class="content"></p>
+      </a>
+    </li>
+    <li hidden>
+      <a href="/posts/2020/11/18/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html">
+        <p class="title">进程通信</p>
+        <p class="content"></p>
+      </a>
+    </li>
+    <li hidden>
+      <a href="/posts/2020/11/15/%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+        <p class="title">进程控制</p>
+        <p class="content"></p>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<footer class="footer select-none">
+  <span></span>
+  <a href="/static/xml/rss.xml">RSS订阅</a>
+  <span>Theme By</span>
+  <a href="https://github.com/TMaize/tmaize-blog">TMaize</a>
+</footer>
+<div id="to-top" class="select-none">
+  <span></span>
+  <span></span>
+</div>
+<script>window.blog={baseurl:"", buildAt:"20210125180116"}</script>
+<script type="text/javascript" src="/static/js/blog.js?t=20210125180116"></script>
+<script type="text/javascript" src="/static/js/search.js?t=20210125180116"></script>
+
+<!-- 点击页面文字冒出特效 -->
+<script>
+;(function(){
+  var textArr = ['富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法治', '爱国', '敬业', '诚信', '友善']
+  window.blog.initClickEffect(textArr)
+})()
+</script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web应用程序漏洞利用-Gabe Blog</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="content-language" content="zh-CN" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="google-site-verification" content="ckhUaoa05QCmWoE1FafzTBcqYI4yBOy-UJKopXDS18M" />
+  <meta name="author" content="Gabe" />
+  <meta name="description" content="Web应用程序漏洞利用"/>
+  <meta name="keywords" content="Gabe,CTF"/>
+  <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="/static/css/common.css?t=20210125180116">
+  <link rel="stylesheet" href="/static/css/post.css?t=20210125180116">
+  <link rel="stylesheet" href="/static/css/highlight.css?t=20210125180116">
+</head>
+<body ondragstart="return false;">
+<header class="header select-none">
+  <img class="logo" src="/static/img/logo.jpg" />
+  <nav class="menu">
+    <a href="/" class="hover-underline">首页</a>
+    <a href="/pages/categories.html" class="hover-underline">归类</a>
+    <a href="/pages/search.html" class="hover-underline">搜索</a>
+    <a href="/pages/links.html" class="hover-underline">友链</a>
+    <a href="/pages/chat.html" class="hover-underline">留言</a>
+    <a href="/pages/about.html" class="hover-underline">关于</a>
+    </nav>
+</header>
+<div class="page page-post">
+  <h1 class="title" id="Web应用程序漏洞利用">Web应用程序漏洞利用</h1>
+  
+  <div class="subtitle">Gabe 于 2021-01-18 发布</div>
+  
+  <div class="post">
+    <h3 id="web应用程序">Web应用程序</h3>
+
+<p>Web应用程序是一种可通过web访问的应用程序，有两种模式，C/S，B/S。</p>
+
+<ul>
+  <li>
+    <p><strong>C/S类型应用程序：Client客户端/Server服务器</strong></p>
+
+    <p>客户端必须安装专门的一个桌面软件才能使用。</p>
+
+    <p>优点：速度快，安全性高，客户端比较强大</p>
+
+    <p>缺点：每台客户端计算机都要下载安装升级，部署维护困难</p>
+
+    <p>例如：QQ，各种网络游戏</p>
+  </li>
+  <li>
+    <p><strong>B/S类型应用程序：Browser浏览器/Server服务器</strong></p>
+
+    <p>客户端不用安装特定的软件，只要通过浏览器打开就可使用。</p>
+
+    <p>优点：维护容易，只需要维护服务器</p>
+
+    <p>缺点：速度慢，安全性相对较低，客户端较弱</p>
+
+    <p>例如：WebQQ，各大网站，各种网页游戏</p>
+  </li>
+</ul>
+
+<h4 id="web应用程序开发过程">Web应用程序开发过程</h4>
+
+<ol>
+  <li>分析</li>
+  <li>设计</li>
+  <li>实现选择一个框架</li>
+  <li>开发</li>
+  <li>打磨抛光</li>
+  <li>发布和维护</li>
+</ol>
+
+<h3 id="web应用程序攻击">Web应用程序攻击</h3>
+
+<p>关于Web应用程序攻击的一个很好的资源是：Open Web Application Security Project（OWASP）。OWSAP的文档介绍了常见的漏洞类型，风险以及如何利用它们。要想进行渗透测试工作，需要了解OWASP top10的方方面面。</p>
+
+<h4 id="什么是node">什么是Node？</h4>
+
+<p>node.js，是基于Chrome V8引擎的JavaScript运行环境，使用了一个事件驱动，非阻塞式io的模型，轻量且高效。</p>
+
+<p>这里我的测试环境，使用Node.js作为应用程序的基础，Express框架作为Web服务器，并将Pug模板添加到此框架中。</p>
+
+<p>Express框架是一个Web框架，Pug正式名称为Jade，是一个服务器端模板引擎，以编程方式生成HTML页面，并发送给客户机。</p>
+
+<h4 id="攻击工具">攻击工具</h4>
+
+<p>Firefox，浏览器；</p>
+
+<p>Wappalyzer，BuiltWith，可揭示网站使用的技术；</p>
+
+<p>BurpSuite，OWASP ZAP，渗透工具。</p>
+
+<h4 id="网络探测">网络探测</h4>
+
+<p>扫描运行端口，网站目录和文件，子域名，网站漏洞。</p>
+
+<h4 id="xss跨站脚本攻击">XSS跨站脚本攻击</h4>
+
+<p>客户端攻击，允许攻击者创建特定的Web请求将恶意代码注入到响应中，可以通过输入验证来修复，但绝不是那么容易，从编码不规范到不理解框架，到应用程序过于复杂，都可能引起一个输入点的不安全性。</p>
+
+
+  </div>
+  
+</div>
+<footer class="footer select-none">
+  <span></span>
+  <a href="/static/xml/rss.xml">RSS订阅</a>
+  <span>Theme By</span>
+  <a href="https://github.com/TMaize/tmaize-blog">TMaize</a>
+</footer>
+<div id="to-top" class="select-none">
+  <span></span>
+  <span></span>
+</div>
+<script>window.blog={baseurl:"", buildAt:"20210125180116"}</script>
+<script type="text/javascript" src="/static/js/blog.js?t=20210125180116"></script>
+
+<!-- 点击页面文字冒出特效 -->
+<script>
+;(function(){
+  var textArr = ['富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法治', '爱国', '敬业', '诚信', '友善']
+  window.blog.initClickEffect(textArr)
+})()
+</script>
+
+</body>
+</html>

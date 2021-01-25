@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>进程通信-Gabe Blog</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="content-language" content="zh-CN" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="google-site-verification" content="ckhUaoa05QCmWoE1FafzTBcqYI4yBOy-UJKopXDS18M" />
+  <meta name="author" content="Gabe" />
+  <meta name="description" content="进程通信"/>
+  <meta name="keywords" content="Gabe,操作系统"/>
+  <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="/static/css/common.css?t=20210125180116">
+  <link rel="stylesheet" href="/static/css/post.css?t=20210125180116">
+  <link rel="stylesheet" href="/static/css/highlight.css?t=20210125180116">
+</head>
+<body ondragstart="return false;">
+<header class="header select-none">
+  <img class="logo" src="/static/img/logo.jpg" />
+  <nav class="menu">
+    <a href="/" class="hover-underline">首页</a>
+    <a href="/pages/categories.html" class="hover-underline">归类</a>
+    <a href="/pages/search.html" class="hover-underline">搜索</a>
+    <a href="/pages/links.html" class="hover-underline">友链</a>
+    <a href="/pages/chat.html" class="hover-underline">留言</a>
+    <a href="/pages/about.html" class="hover-underline">关于</a>
+    </nav>
+</header>
+<div class="page page-post">
+  <h1 class="title" id="进程通信">进程通信</h1>
+  
+  <div class="subtitle">Gabe 于 2020-11-18 发布</div>
+  
+  <div class="post">
+    <h4 id="什么是进程通信">什么是进程通信</h4>
+
+<p>进程通信是指在进程间传输数据。</p>
+
+<p>进程通信根据交换信息量的多少和效率的高低，分为<strong>低级通信</strong>（只能传递状态和整数值）和<strong>高级通信</strong>（提高信号通信的效率，传递大量数据，减轻程序编制的复杂度）。</p>
+
+<p>其中高级进程通信分为三种方式：共享内存模式、消息传递模式、共享文件模式。</p>
+
+<h4 id="为什么要进行进程通信">为什么要进行进程通信</h4>
+
+<ul>
+  <li>
+    <p>为了提高计算机系统的效率；</p>
+  </li>
+  <li>
+    <p>增强计算机系统内各种硬件的并行操作能力；</p>
+  </li>
+  <li>
+    <p>操作系统要求程序结构必须适应并发处理的需要；</p>
+
+    <p>进程是操作系统的核心，所有基于多道程序设计的操作系统都建立在进程的概念之上。</p>
+
+    <p>目前的计算机系统均提供了多任务并行环境，无论是应用程序还是系统程序，都需要针对每一个任务创建相应的进程，进程是设计和分析操作系统的有力工具。</p>
+
+    <p>然而不同的进程之间，即使是具有家族联系的父子进程，都具有各自不同的进程映像。由于不同的进程运行在各自不同的内存空间中，一方对于变量的修改另一方是无法感知的。因此，进程之间的信息传递不可能通过变量或其它数据结构直接进行，只能通过进程间通信来完成。</p>
+
+    <p>并发进程之间的相互通信是实现多进程间协作和同步的常用工具，具有很强的实用性，进程通信是操作系统内核层极为重要的部分。</p>
+  </li>
+</ul>
+
+<h4 id="基本进程通讯方法">基本进程通讯方法</h4>
+
+<ul>
+  <li>
+    <p>共享存储(间接通信)</p>
+
+    <ul>
+      <li>
+        <p>Shared-memory：相互通讯的进程有共享存储区。</p>
+      </li>
+      <li>
+        <p>进程间可以通过直接读写共享存储区的变量来交互数据，同步与互斥在并发程序设计时安排进入程序。操作系统提供这样的共享存储区及同步互斥工具。</p>
+      </li>
+      <li>
+        <p>最为快捷有效的方式之一，UNIX系统中常被使用。内存共享区的互斥要通过其它机制实现；数据的发送方不关心数据由谁接收，数据的接收方也不关心数据是由谁发送的，存在安全隐患。</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>消息传递</p>
+
+    <ul>
+      <li>
+        <p>message-passing：通过操作系统的相应系统调用进行消息传递通讯。</p>
+      </li>
+      <li>
+        <p>分为直接和间接两种：</p>
+      </li>
+      <li>
+        <p>直接通信方式：点到点的发送</p>
+      </li>
+      <li>
+        <p>Send (DestProcessName, Message)；</p>
+      </li>
+      <li>
+        <p>Receive (SourceProcessName, Message)；</p>
+      </li>
+      <li>
+        <p>基本思想：进程在发送和接收消息时直接指明接收者或发送者进程ID。</p>
+      </li>
+      <li>
+        <p>缺点：必须指定接收进程ID。（UNIX的信号机制类似这种形式）</p>
+      </li>
+      <li>
+        <p>间接通信方式：以信箱为媒介进行传递，可以广播</p>
+      </li>
+      <li>
+        <p>Send (MailBox, Message)；</p>
+      </li>
+      <li>
+        <p>Receive (MailBox, Message)；</p>
+      </li>
+      <li>
+        <p>间接通信方式（信箱命名法）</p>
+      </li>
+      <li>
+        <p>基本思想：系统为每个信箱设一个消息队列，消息发送和接收都指向该消息队列。</p>
+      </li>
+      <li>
+        <p>缺点：必须有一个通讯双方共享的一个逻辑消息队列（ UNIX的PIPE，FIFO及IPC消息传递机制都属于这种形式），使用时消息发送者约定写方式打开信箱,消息接受者约定读方式打开信箱或同时读写打开。</p>
+      </li>
+      <li>
+        <p>优点：很容易建立双向通讯链(只要对信箱说明为读写打开)。</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>管道通信</p>
+
+    <ul>
+      <li>
+        <p>是一种信息流缓冲机构， UNIX系统中管道基于文件系统，在内核中通过文件描述符表示。管道以先进先出(FIFO)方式组织数据传输。</p>
+      </li>
+      <li>
+        <p>实现方法：</p>
+      </li>
+      <li>
+        <p>调用pipe()函数创建管道
+int pipe(int fd[2]);</p>
+
+        <p>fd[0]为管道里的读取端</p>
+
+        <p>fd[1]则为管道的写入端。</p>
+
+        <p>通过write()函数写入信息</p>
+
+        <p>int write (int handle,char *buf,unsigned len)</p>
+
+        <p>进程通过read()函数读取信息</p>
+
+        <p>int read (int handle,void *buf,unsigned len)</p>
+      </li>
+      <li>
+        <p>特点</p>
+
+        <ol>
+          <li>
+            <p>管道是一个单向通信信道，如果进程间要进行双向通信，通常需要定义两个管道。</p>
+          </li>
+          <li>
+            <p>管道通过系统调用read(), write()函数进行读写操作。</p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>分类</p>
+
+        <ol>
+          <li>匿名管道：只适用于父子进程之间通信；管道能够把信息从一个进程的地址空间拷贝到另一个进程的地址空间。</li>
+          <li>命名管道：命名管道有自己的名字和访问权限的限制，就像一个文件一样。它可以用于不相关进程间的通信，进程通过使用管道的名字获得管道。</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="方式">方式</h4>
+
+<ol>
+  <li>文件和记录锁定。
+为避免两个进程间同时要求访问同一共享资源而引起访问和操作的混乱，在进程对共享资源进行访问前必须对其进行锁定，该进程访问完后再释放。这是UNIX为共享资源提供的互斥性保障。</li>
+  <li>管道。
+管道一般用于两个不同进程之间的通信。当一个进程创建一个管道，并调用fork创建自己的一个子进程后，父进程关闭读管道端，子进程关闭写管道端，这样 提供了两个进程之间数据流动的一种方式。</li>
+  <li>FIFO。
+FIFO是一种先进先出的队列。它类似于一个管道，只允许数据的单向流动。每个FIFO都有一个名字，允许不相关的进程访问同一个FIFO。因此也成为命名管。</li>
+  <li>消息队列。
+UNIX下不同进程之间可实现共享资源的一种机制；UNIX允许不同进程将格式化的数据流以消息形式发送给任意进程。对消息队列具有操作权限的进程都可以使用msget完成对消息队列的操作控制。通过使用消息类型，进程可以按任何顺序读消息，或为消息安排优先级顺序。</li>
+  <li>信号灯。
+作为进程间通讯的一种方法，它不是用于交换大批数据，而用于多进程之间的同步（协调对共享存储段的存取）。</li>
+  <li>共享内存。
+通过信号灯实现存储共享（类似“红灯停、绿灯行”）</li>
+</ol>
+
+
+  </div>
+  
+</div>
+<footer class="footer select-none">
+  <span></span>
+  <a href="/static/xml/rss.xml">RSS订阅</a>
+  <span>Theme By</span>
+  <a href="https://github.com/TMaize/tmaize-blog">TMaize</a>
+</footer>
+<div id="to-top" class="select-none">
+  <span></span>
+  <span></span>
+</div>
+<script>window.blog={baseurl:"", buildAt:"20210125180116"}</script>
+<script type="text/javascript" src="/static/js/blog.js?t=20210125180116"></script>
+
+<!-- 点击页面文字冒出特效 -->
+<script>
+;(function(){
+  var textArr = ['富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法治', '爱国', '敬业', '诚信', '友善']
+  window.blog.initClickEffect(textArr)
+})()
+</script>
+
+</body>
+</html>

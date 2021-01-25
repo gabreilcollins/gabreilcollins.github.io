@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>进程控制-Gabe Blog</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="content-language" content="zh-CN" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="google-site-verification" content="ckhUaoa05QCmWoE1FafzTBcqYI4yBOy-UJKopXDS18M" />
+  <meta name="author" content="Gabe" />
+  <meta name="description" content="进程控制"/>
+  <meta name="keywords" content="Gabe,操作系统"/>
+  <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="/static/css/common.css?t=20210125180116">
+  <link rel="stylesheet" href="/static/css/post.css?t=20210125180116">
+  <link rel="stylesheet" href="/static/css/highlight.css?t=20210125180116">
+</head>
+<body ondragstart="return false;">
+<header class="header select-none">
+  <img class="logo" src="/static/img/logo.jpg" />
+  <nav class="menu">
+    <a href="/" class="hover-underline">首页</a>
+    <a href="/pages/categories.html" class="hover-underline">归类</a>
+    <a href="/pages/search.html" class="hover-underline">搜索</a>
+    <a href="/pages/links.html" class="hover-underline">友链</a>
+    <a href="/pages/chat.html" class="hover-underline">留言</a>
+    <a href="/pages/about.html" class="hover-underline">关于</a>
+    </nav>
+</header>
+<div class="page page-post">
+  <h1 class="title" id="进程控制">进程控制</h1>
+  
+  <div class="subtitle">Gabe 于 2020-11-15 发布</div>
+  
+  <div class="post">
+    <h4 id="什么是进程">什么是进程</h4>
+
+<p>进程的概念是操作系统中最基本、最重要的概念。在多道程序系统（单处理器下并发运行多程序）出现后，为了刻画系统内部出现的动态情况，描述系统内部各道程序的活动规律而引进的一个新概念：</p>
+
+<p>进程是一个<strong>可并发执行</strong>的具有<strong>独立功能</strong>的程序关于<strong>某个数据集合</strong>的一次<strong>执行过程</strong>，也是操作系统进行资源分配和保护的基本单位。</p>
+
+<h4 id="为什么要引入进程">为什么要引入进程</h4>
+
+<ul>
+  <li>刻画系统的动态性，发挥系统并发性，提高资源的利用率。</li>
+  <li>解决共享性，正确描述程序（可再入）的执行状态。</li>
+</ul>
+
+<h4 id="进程的控制">进程的控制</h4>
+
+<p>处理器管理的一个重要工作就是对进程的控制：创建，阻塞，唤醒，挂起，激活，终止，撤销等。</p>
+
+<p>控制与管理由操作系统原语（若干条指令组成的程序段，用于执行特定功能，执行过程中不可被中断）来实现。</p>
+
+<h5 id="创建子进程">创建子进程：</h5>
+
+<p>在linux系统中，创建子进程方法有两种：</p>
+
+<p>fork（），创建进程后，子进程是父进程的一个拷贝，拥有相同的变量，打开的文件，但不共享任何内容。</p>
+
+<p>clone() ，与fork()不同的是，允许定义共享内容。</p>
+
+<p>linux所做工作如下：将task_struct结构成员count加1，当父进程或子进程对虚存进行写操作的时候，给子进程的指针所指的数据结构分配内存。</p>
+
+<p>进程数缺省值计算方法：<strong>系统内存大小/内核栈大小/2</strong>，如内存有512M，则默认上限为：512*1024*1024/8192/2=32768。</p>
+
+<p>例子：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">pid_t</span> <span class="n">pid</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="o">*</span><span class="n">message</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+	<span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">perror</span><span class="p">(</span><span class="s">"fork failed"</span><span class="p">);</span>
+		<span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">message</span> <span class="o">=</span> <span class="s">"This is the child</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+ 		<span class="n">n</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ 		<span class="n">message</span> <span class="o">=</span> <span class="s">"This is the parent</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+ 		<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+ 	<span class="p">}</span>
+ 	<span class="k">for</span><span class="p">(;</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+ 		<span class="n">printf</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+ 		<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+ 	<span class="p">}</span>
+ 	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>执行如下：</p>
+
+<p><img src="Kali-2020-11-15-20-12-03.png" alt="图片" /></p>
+
+<ol>
+  <li>
+    <p>父进程初始化。</p>
+  </li>
+  <li>
+    <p>父进程调用fork，这是一个系统调用，因此进入内核。</p>
+  </li>
+  <li>
+    <p>内核根据父进程复制出一个子进程，父进程和子进程的PCB信息相同，用户态代码和数据也相同。因此，子进程现在的状态看起来和父进程一样，做完了初始化，刚调用了fork进入内核，还没有从内核返回。</p>
+  </li>
+  <li>
+    <p>现在有两个一模一样的进程看起来都调用了fork进入内核等待从内核返回（实际上fork只调用了一次），此外系统中还有很多别的进程也等待从内核返回。是父进程先返回还是子进程先返回，还是这两个进程都等待，先去调度执行别的进程，这都不一定，取决于内核的调度算法。</p>
+  </li>
+  <li>
+    <p>如果某个时刻父进程被调度执行了，从内核返回后就从fork函数返回，保存在变量pid中的返回值是子进程的id，是一个大于0的整数，因此执下面的else分支，然后执行for循环，打印”This is the parent\n”三次之后终止。</p>
+  </li>
+  <li>
+    <p>如果某个时刻子进程被调度执行了，从内核返回后就从fork函数返回，保存在变量pid中的返回值是0，因此执行下面的if (pid == 0)分支，然后执行for循环，打印”This is thechild\n”六次之后终止。fork调用把父进程的数据复制一份给子进程，但此后二者互不影响，在这个例子中，fork调用之后父进程和子进程的变量message和n被赋予不同的值，互不影响。</p>
+  </li>
+  <li>
+    <p>父进程每打印一条消息就睡眠1秒，这时内核调度别的进程执行，在1秒这么长的间隙里（对于计算机来说1秒很长了）子进程很有可能被调度到。同样地，子进程每打印一条消息就睡眠1秒，在这1秒期间父进程也很有可能被调度到。所以程序运行的结果基本上是父子进程交替打印，但这也不是一定的，取决于系统中其它进程的运行情况和内核的调度算法，如果系统中其它进程非常繁忙则有可能观察到不同的结果。另外，读者也可以把sleep(1);去掉看程序的运行结果如何。</p>
+  </li>
+  <li>
+    <p>这个程序是在Shell下运行的，因此Shell进程是父进程的父进程。父进程运行时Shell进程处于等待状态，当父进程终止时Shell进程认为命令执行结束了，于是打印Shell提示符，而事实上子进程这时还没结束，所以子进程的消息打印到了Shell提示符后面。最后光标停在This is the child的下一行，这时用户仍然可以敲命令，即使命令不是紧跟在提示符后面，Shell也能正确读取。fork函数的特点概括起来就是“调用一次，返回两次”，在父进程中调用一次，在父进程和子进程中各返回一次。从上图可以看出，一开始是一个控制流程，调用fork之后发生了分叉，变成两个控制流程，这也就是“fork”（分叉）这个名字的由来了。子进程中fork的返回值是0，而父进程中fork的返回值则是子进程的id（从根本上说fork是从内核返回的，内核自有办法让父进程和子进程返回不同的值），这样当fork函数返回后，程序员可以根据返回值的不同让父进程和子进程执行不同的代码。</p>
+  </li>
+</ol>
+
+<h5 id="阻塞进程和唤醒进程">阻塞进程和唤醒进程</h5>
+
+<p>在linux系统中，与进程的阻塞和唤醒的相关原语有：sleep（暂停），pause（暂停等待信号），wait（等待进程暂停或终止），kill（发信号）。</p>
+
+<p>一个进程终止时，会关闭所有文件描述符，释放用户空间分配的内存，但PCB仍然保存着，内核在其中保存着一些信息。进程的父进程可以调用wait或waitpid获取这些信息，然后彻底清除掉这个进程。</p>
+
+<p>waitpid例子：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;sys/types.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">pid_t</span> <span class="n">pid</span><span class="p">;</span>
+	<span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">perror</span><span class="p">(</span><span class="s">"fork failed"</span><span class="p">);</span>
+		<span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"This is the child</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+		<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">exit</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+	<span class="p">}</span> 
+	<span class="k">else</span> <span class="p">{</span>
+		<span class="kt">int</span> <span class="n">stat_val</span><span class="p">;</span>
+		<span class="n">waitpid</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">stat_val</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">WIFEXITED</span><span class="p">(</span><span class="n">stat_val</span><span class="p">))</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"Child exited with code %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">stat_val</span><span class="p">));</span>
+		<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">WIFSIGNALED</span><span class="p">(</span><span class="n">stat_val</span><span class="p">))</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"Child terminated abnormally, signal %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">WTERMSIG</span><span class="p">(</span><span class="n">stat_val</span><span class="p">));</span>
+		<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>执行如下：</p>
+
+<p><img src="Kali-2020-11-15-20-48-08.png" alt="Picture" /></p>
+
+
+  </div>
+  
+</div>
+<footer class="footer select-none">
+  <span></span>
+  <a href="/static/xml/rss.xml">RSS订阅</a>
+  <span>Theme By</span>
+  <a href="https://github.com/TMaize/tmaize-blog">TMaize</a>
+</footer>
+<div id="to-top" class="select-none">
+  <span></span>
+  <span></span>
+</div>
+<script>window.blog={baseurl:"", buildAt:"20210125180116"}</script>
+<script type="text/javascript" src="/static/js/blog.js?t=20210125180116"></script>
+
+<!-- 点击页面文字冒出特效 -->
+<script>
+;(function(){
+  var textArr = ['富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法治', '爱国', '敬业', '诚信', '友善']
+  window.blog.initClickEffect(textArr)
+})()
+</script>
+
+</body>
+</html>
