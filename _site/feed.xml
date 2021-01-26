@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-25T18:01:16+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Gabe Blog</title><subtitle>Gabe的个人博客</subtitle><author><name>Gabe</name></author><entry><title type="html">Web应用程序漏洞利用</title><link href="http://localhost:4000/posts/2021/01/18/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8.html" rel="alternate" type="text/html" title="Web应用程序漏洞利用" /><published>2021-01-18T00:00:00+08:00</published><updated>2021-01-18T00:00:00+08:00</updated><id>http://localhost:4000/posts/2021/01/18/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8</id><content type="html" xml:base="http://localhost:4000/posts/2021/01/18/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8.html">&lt;h3 id=&quot;web应用程序&quot;&gt;Web应用程序&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-26T20:11:48+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Gabe Blog</title><subtitle>Gabe的个人博客</subtitle><author><name>Gabe</name></author><entry><title type="html">杂凑表</title><link href="http://localhost:4000/posts/2021/01/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%93%88%E5%B8%8C%E8%A1%A8.html" rel="alternate" type="text/html" title="杂凑表" /><published>2021-01-26T00:00:00+08:00</published><updated>2021-01-26T00:00:00+08:00</updated><id>http://localhost:4000/posts/2021/01/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%93%88%E5%B8%8C%E8%A1%A8</id><content type="html" xml:base="http://localhost:4000/posts/2021/01/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%93%88%E5%B8%8C%E8%A1%A8.html">&lt;h4 id=&quot;什么是杂凑表&quot;&gt;什么是杂凑表&lt;/h4&gt;
+&lt;p&gt;杂凑表是由元素和标识符一一对应的字符串的一个集合。&lt;/p&gt;
+
+&lt;h4 id=&quot;为什么要进行杂凑&quot;&gt;为什么要进行杂凑&lt;/h4&gt;
+&lt;p&gt;能够对一个数据序列的访问过程更加迅速有效，通过散列函数，元素能更快的进行定位。&lt;/p&gt;
+
+&lt;h4 id=&quot;基本概念&quot;&gt;基本概念&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;散列函数：给定关键字k，其值存放在f(k)的存储位置上，其中对应关系f，为散列函数。&lt;/li&gt;
+  &lt;li&gt;散列：映射过程。&lt;/li&gt;
+  &lt;li&gt;散列地址：散列函数所得的存储地址。&lt;/li&gt;
+  &lt;li&gt;冲突（碰撞）：对不同的关键字可能会得到相同的散列地址，即k1!=k2，而f(k1)=f(k2)。&lt;/li&gt;
+  &lt;li&gt;散列表：一个有限的连续的地址集合，将关键字k在地址集中的像作为记录在表中。&lt;/li&gt;
+  &lt;li&gt;装载因子：α=填入表中元素个数/表长。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;解决碰撞&quot;&gt;解决碰撞&lt;/h4&gt;
+&lt;p&gt;拉链法&lt;/p&gt;
+
+&lt;h4 id=&quot;常用散列方法&quot;&gt;常用散列方法&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;直接寻址法：
+    &lt;ul&gt;
+      &lt;li&gt;除法杂凑：h(k)=k mod m&lt;/li&gt;
+      &lt;li&gt;乘法杂凑：m(kA mod 1)取底&lt;/li&gt;
+      &lt;li&gt;全域杂凑：在一组杂凑函数中随机选取一个作为杂凑函数&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;开放地址法：hi=(h(k) + di) mod m,i=1,2,….,k&amp;lt;=m-1.di为下列增量序列，有下列三种取法：
+    &lt;ul&gt;
+      &lt;li&gt;线性探测&lt;/li&gt;
+      &lt;li&gt;二次探查&lt;/li&gt;
+      &lt;li&gt;双重探查&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;课后习题&quot;&gt;课后习题&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;1.在超大规模数组上实现直接寻址字典的解决方案&lt;/strong&gt;
+&lt;strong&gt;2.假设用一个随机的散列函数来将n个不同的关键字杂凑到一个长度为m的数组中，预期的碰撞数为多少？即{ (x,y):h(x)=h(y) }&lt;/strong&gt;&lt;/p&gt;</content><author><name>Gabe</name></author><category term="数据结构" /><summary type="html">什么是杂凑表 杂凑表是由元素和标识符一一对应的字符串的一个集合。</summary></entry><entry><title type="html">Web应用程序漏洞利用</title><link href="http://localhost:4000/posts/2021/01/18/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8.html" rel="alternate" type="text/html" title="Web应用程序漏洞利用" /><published>2021-01-18T00:00:00+08:00</published><updated>2021-01-18T00:00:00+08:00</updated><id>http://localhost:4000/posts/2021/01/18/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8</id><content type="html" xml:base="http://localhost:4000/posts/2021/01/18/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8.html">&lt;h3 id=&quot;web应用程序&quot;&gt;Web应用程序&lt;/h3&gt;
 
 &lt;p&gt;Web应用程序是一种可通过web访问的应用程序，有两种模式，C/S，B/S。&lt;/p&gt;
 
@@ -64,7 +103,7 @@
 
 &lt;h4 id=&quot;xss跨站脚本攻击&quot;&gt;XSS跨站脚本攻击&lt;/h4&gt;
 
-&lt;p&gt;客户端攻击，允许攻击者创建特定的Web请求将恶意代码注入到响应中，可以通过输入验证来修复，但绝不是那么容易，从编码不规范到不理解框架，到应用程序过于复杂，都可能引起一个输入点的不安全性。&lt;/p&gt;</content><author><name>Gabe</name></author><category term="CTF" /><summary type="html">Web应用程序</summary></entry><entry><title type="html">进程通信</title><link href="http://localhost:4000/posts/2020/11/18/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html" rel="alternate" type="text/html" title="进程通信" /><published>2020-11-18T00:00:00+08:00</published><updated>2020-11-18T00:00:00+08:00</updated><id>http://localhost:4000/posts/2020/11/18/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1</id><content type="html" xml:base="http://localhost:4000/posts/2020/11/18/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html">&lt;h4 id=&quot;什么是进程通信&quot;&gt;什么是进程通信&lt;/h4&gt;
+&lt;p&gt;客户端攻击，允许攻击者创建特定的Web请求将恶意代码注入到响应中，可以通过输入验证来修复，但绝不是那么容易，从编码不规范到不理解框架，到应用程序过于复杂，都可能引起一个输入点的不安全性。&lt;/p&gt;</content><author><name>Gabe</name></author><category term="CTF" /><summary type="html">Web应用程序</summary></entry><entry><title type="html">进程通信</title><link href="http://localhost:4000/posts/2020/11/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html" rel="alternate" type="text/html" title="进程通信" /><published>2020-11-18T00:00:00+08:00</published><updated>2020-11-18T00:00:00+08:00</updated><id>http://localhost:4000/posts/2020/11/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1</id><content type="html" xml:base="http://localhost:4000/posts/2020/11/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html">&lt;h4 id=&quot;什么是进程通信&quot;&gt;什么是进程通信&lt;/h4&gt;
 
 &lt;p&gt;进程通信是指在进程间传输数据。&lt;/p&gt;
 
@@ -225,7 +264,7 @@ UNIX下不同进程之间可实现共享资源的一种机制；UNIX允许不同
 作为进程间通讯的一种方法，它不是用于交换大批数据，而用于多进程之间的同步（协调对共享存储段的存取）。&lt;/li&gt;
   &lt;li&gt;共享内存。
 通过信号灯实现存储共享（类似“红灯停、绿灯行”）&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Gabe</name></author><category term="操作系统" /><summary type="html">什么是进程通信</summary></entry><entry><title type="html">进程控制</title><link href="http://localhost:4000/posts/2020/11/15/%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html" rel="alternate" type="text/html" title="进程控制" /><published>2020-11-15T00:00:00+08:00</published><updated>2020-11-15T00:00:00+08:00</updated><id>http://localhost:4000/posts/2020/11/15/%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6</id><content type="html" xml:base="http://localhost:4000/posts/2020/11/15/%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html">&lt;h4 id=&quot;什么是进程&quot;&gt;什么是进程&lt;/h4&gt;
+&lt;/ol&gt;</content><author><name>Gabe</name></author><category term="操作系统" /><summary type="html">什么是进程通信</summary></entry><entry><title type="html">进程控制</title><link href="http://localhost:4000/posts/2020/11/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html" rel="alternate" type="text/html" title="进程控制" /><published>2020-11-15T00:00:00+08:00</published><updated>2020-11-15T00:00:00+08:00</updated><id>http://localhost:4000/posts/2020/11/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6</id><content type="html" xml:base="http://localhost:4000/posts/2020/11/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html">&lt;h4 id=&quot;什么是进程&quot;&gt;什么是进程&lt;/h4&gt;
 
 &lt;p&gt;进程的概念是操作系统中最基本、最重要的概念。在多道程序系统（单处理器下并发运行多程序）出现后，为了刻画系统内部出现的动态情况，描述系统内部各道程序的活动规律而引进的一个新概念：&lt;/p&gt;
 
@@ -361,4 +400,66 @@ UNIX下不同进程之间可实现共享资源的一种机制；UNIX允许不同
 
 &lt;p&gt;执行如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;Kali-2020-11-15-20-48-08.png&quot; alt=&quot;Picture&quot; /&gt;&lt;/p&gt;</content><author><name>Gabe</name></author><category term="操作系统" /><summary type="html">什么是进程</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;Kali-2020-11-15-20-48-08.png&quot; alt=&quot;Picture&quot; /&gt;&lt;/p&gt;</content><author><name>Gabe</name></author><category term="操作系统" /><summary type="html">什么是进程</summary></entry><entry><title type="html">HBGary公司</title><link href="http://localhost:4000/posts/2020/01/26/HBGary%E5%85%AC%E5%8F%B8.html" rel="alternate" type="text/html" title="HBGary公司" /><published>2020-01-26T00:00:00+08:00</published><updated>2020-01-26T00:00:00+08:00</updated><id>http://localhost:4000/posts/2020/01/26/HBGary%E5%85%AC%E5%8F%B8</id><content type="html" xml:base="http://localhost:4000/posts/2020/01/26/HBGary%E5%85%AC%E5%8F%B8.html">&lt;p&gt;入侵电脑，窃听用户，假身份上网——美国安全公司HBGary是电脑防护和间谍软件的供应商。而其客户中就有美国的国家安全机构。现在，该公司被偷的电子邮件可以让我们对其数字化战争中的业务做一个初步了解。&lt;/p&gt;
+
+&lt;p&gt;去年六月，美国安全公司HBGary的一名经理在美国联邦政府招标平台FBO.gov上发现了一个激动人心的项目：美国空军正在为一个所谓的“人事管理软件”寻找供应商。这一软件要能够让每个用户可以使用十个伪装身份上网。招标方对伪装身份的要求是：“必须可以让这些身份可以成为世界上任何地区的人。”而且即便是“富有经验的对手”也不能看出其在网上的详细信息是假的。&lt;/p&gt;
+
+&lt;p&gt;简而言之：军方需要一套用来创建、管理和使用部队的数码信息的管理工具。出于什么目的尚不清楚。但可以想见几点：宣传、侦察、对使用假身份上网而暴露的人员提供保护。&lt;/p&gt;
+
+&lt;p&gt;看到这则消息以后，这位HBGary经理马上跳了起来，立即通过电子邮件将这份招标信息的链接发送到几个同事的邮箱，并加了评论：“这是在公共网络上发布的招标，可能不是真的？”但是HBGary依然对其进行了投标。&lt;/p&gt;
+
+&lt;p&gt;与美国情报机构良好的联系&lt;/p&gt;
+
+&lt;p&gt;几个月后，互联网上的任何用户都能够看到这个消息以及HBGary的上万封邮件了——黑客盗窃了这家公司的数据。这场盗窃使网友们纷纷向HBGary扔来了板砖。黑客组织Anonymous称对这场数据盗窃负责。该组织曾闻名于维基解密捐款账户被封锁后对信用卡公司的黑客攻击。一位HBGary经理之前曾称，他知道Anonymous最重要的几位成员的身份。在该言论发布以后，匿名黑客搞定了HBGary几位经理的密码，偷了他们的电子邮件，攻陷了该公司的网页和数个Twitter账户。&lt;/p&gt;
+
+&lt;p&gt;别看HBGary连自己的企业网络安全都存在漏洞，但千万不能低估它。该公司的电子邮件表明，HBGary的客户包括美国国土安全部和美国特种作战司令部。其几年前成立的子公司——联邦HBGary的几位经理曾任命于国防承包商诺斯罗普格鲁曼公司，并曾经和美国中央情报局、国家安全局和国防情报局的代表共事。&lt;/p&gt;
+
+&lt;p&gt;间谍软件开发合同令专家惊讶&lt;/p&gt;
+
+&lt;p&gt;其实，到目前为止，HBGary并非以间谍软件见长。据德国“明镜周刊在线”记者称，其采访过的很多数据安全专家都知道HBGary，并认为其技术是可靠的。HBGary比较闻名的主要是反间谍产品，尤其是响应者软件。这种工具被广泛用于检测电脑是否被恶意软件或嗅探软件攻击。根据该公司被公开的电子邮件，德国的刑事调查办公室也在使用他们的响应者软件。&lt;/p&gt;
+
+&lt;p&gt;但是，HBGary不但提供防御类软件产品，也提供攻击性软件。&lt;/p&gt;
+
+&lt;p&gt;德国鲁尔波鸿大学托斯特·霍尔茨(Thorsten Holz)教授是研究嵌入式恶意软件方面的专家。他用“颇受欢迎”这个词来形容该公司。在他看来，该公司的首席执行官格雷格·胡歌伦德(Greg Hoglund)是一位“Rootkit恶意软件专家”。胡歌伦德几年前曾与杰米·巴特勒(Jamie Butler)一起写过一本关于Rootkit研发的权威性著作。&lt;/p&gt;
+
+&lt;p&gt;Rootkit是指主要功能为隐藏其他程式进程的软件，可能是一个或一个以上的软件组合。这使Rootkit具有广泛的操作性，令病毒扫描库等防御软件也不能将它识别出来。&lt;/p&gt;
+
+&lt;p&gt;霍尔茨说，当然，防御性软件的开发者也需要从攻击者的角度来演示潜在的攻击，以便查找漏洞。然而，公司电子邮件的详细内容还是令他十分惊讶：“对我来说，这样的信息从来没听说过，HBGary居然也设计和出售Rootkit这样的攻击性软件。”&lt;/p&gt;
+
+&lt;p&gt;委托任务：撬掉保护性软件，锁定文件&lt;/p&gt;
+
+&lt;p&gt;在关于HBGary的消息中，有许多关于攻击性软件的方案。其中有些是该公司直接向客户提供的，如HBGary“Rootkit键盘记录平台”；而有些是该公司自2009年以来在军火商客户的委托下开发的。其项目代码名称各异，如“任务Z”、“项目C”、“12只猴子”或“一点红”，而这些形形色色的恶意软件无一例外地可以满足下列需求：&lt;/p&gt;
+
+&lt;p&gt;l其中一个方案里写道：嗅探监测软件要能够记录键盘的录入情况，并按照特定关键字对电脑内的文件内容进行搜寻，并通过网络浏览器在普通数据传送时将搜寻到的数据捎带传回。&lt;/p&gt;
+
+&lt;p&gt;l保证应用比较普遍的反Rootkit保护软件不能识别这一软件。&lt;/p&gt;
+
+&lt;p&gt;l恶意软件在与有关管制单位交流互联网的网络流量情况时不受防火墙影响，并可以将其对外网的数据传输隐藏起来。&lt;/p&gt;
+
+&lt;p&gt;l嗅探监测软件以不同的方式存在于电脑中，如网页、需要打开的文件、电子邮件以及传送的数据包。&lt;/p&gt;
+
+&lt;p&gt;远距离访问Flash组件&lt;/p&gt;
+
+&lt;p&gt;从目前的有关新闻描述看来，有些间谍软件组件的开发已经完成了。所以HBGary的经理们正在讨论，应该如何与国防承包商签订确定HBGary交付给对方的程序代码的使用范围的合同。他们讨论的对象正是“Adobe Macromedia Flash Player远程访问工具”(Adobe Macromedia Flash Player Remote Access Tool)和“HBGary Rootkit键盘记录平台”(HBGary Rootkit Keylogger Platform)。&lt;/p&gt;
+
+&lt;p&gt;从该公司被公布的电子邮件中无法看出，这些应用程序是否已经被使用以及在使用过程中取得了什么成果。专家对其技术设计的可行性做出了“合理”的评估结果。托斯特·霍尔茨评价道：“我所看过的联邦HBGary的软件建议从技术上来说是正确的。软件设计者所讨论和衡量的不同方法全都是有意义的。”&lt;/p&gt;
+
+&lt;p&gt;监控和渗透社交网站&lt;/p&gt;
+
+&lt;p&gt;2010年夏天，一位HBGary联邦经理对其同事讲述了在美国国家安全局的“社会媒体的弱点”会议上的一份报告。报告称，出于自己的目的，某些组织对网络保护手段以及将社会媒体作为启蒙宣传的工具有非常大的兴趣。比如“美国陆军情报和安全司令部”对这些手段就非常感兴趣。&lt;/p&gt;
+
+&lt;p&gt;在内部邮件的交流中，HBGary的经理们主要讨论了安全软件的以下两种用途：&lt;/p&gt;
+
+&lt;p&gt;l通过软件了对不同社交网的网络关系进行自动分析。&lt;/p&gt;
+
+&lt;p&gt;l软件工具应该可以在社交网络上给虚拟身份添加相匹配的信息简介，并加以维护，以便给人“这一活跃在网上的虚拟人物确实存在”的印象，&lt;/p&gt;
+
+&lt;p&gt;那么这种虚拟身份该如何使用呢？一位HBGary经理在一份构思中是这样描述的：可以分两个阶段对黑客集团进行渗透。首先要操控黑客所使用的软件，然后用另一个身份来揭露这一恶意操控，从而使前面的操控者暴露，这样来获得真正的黑客成员的信任。&lt;/p&gt;
+
+&lt;p&gt;而如何对这一虚拟数码身份大军进行管理和维护，着实让这帮HBGary经理头疼。一位经理写道：“大部分将不得不通过软件工具来自动维护。”另一位经理回答说，他认识一位“在软件开发方面有多年的经验，熟知业务并掌握魔兽世界的很多故事和技术”的人。他指的是在线角色扮演游戏——魔兽世界中通过点击工具积累游戏币(目的是将其出售给玩家)。&lt;/p&gt;
+
+&lt;p&gt;实践中的数字防控工业&lt;/p&gt;
+
+&lt;p&gt;当然，所有这一切归根到底都是有关安全的买卖。而正如HBGary的经理们在邮件中所表现的，他们是非常积极的卖方。HBGary的经理们纷纷讨论，用什么样的解说能引起潜在客户的兴趣？到底存在什么样的人们认为的或者真正的危险？而如何才能借助这些危险来卖出他们的商品？什么样的报道会吸引观众？如何在各种会议和演示场所给人们留下正确的印象？可以用Rootkit恶意软件来打开或者关闭一台电脑的CD光驱吗？&lt;/p&gt;
+
+&lt;p&gt;对实践中的数字防控工业小窥一斑，可以发现：当你开始觉着什么东西有可能的时候，可能已经有人在对其进行研发并寻找潜在客户了。&lt;/p&gt;</content><author><name>Gabe</name></author><category term="转载杂谈" /><summary type="html">入侵电脑，窃听用户，假身份上网——美国安全公司HBGary是电脑防护和间谍软件的供应商。而其客户中就有美国的国家安全机构。现在，该公司被偷的电子邮件可以让我们对其数字化战争中的业务做一个初步了解。</summary></entry></feed>

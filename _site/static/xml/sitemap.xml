@@ -2,55 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://alexslive.top/</loc>
-    <lastmod>2021-01-25</lastmod>
+    <lastmod>2021-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alexslive.top/pages/categories.html</loc>
-    <lastmod>2021-01-25</lastmod>
+    <lastmod>2021-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alexslive.top/pages/search.html</loc>
-    <lastmod>2021-01-25</lastmod>
+    <lastmod>2021-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alexslive.top/pages/links.html</loc>
-    <lastmod>2021-01-25</lastmod>
+    <lastmod>2021-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alexslive.top/pages/chat.html</loc>
-    <lastmod>2021-01-25</lastmod>
+    <lastmod>2021-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alexslive.top/pages/about.html</loc>
-    <lastmod>2021-01-25</lastmod>
+    <lastmod>2021-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://alexslive.top/posts/2021/01/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%93%88%E5%B8%8C%E8%A1%A8.html</loc>
+    <lastmod>2021-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alexslive.top/posts/2021/01/18/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8.html</loc>
-    <lastmod>2021-01-25</lastmod>
+    <lastmod>2021-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://alexslive.top/posts/2020/11/18/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html</loc>
-    <lastmod>2021-01-25</lastmod>
+    <loc>http://alexslive.top/posts/2020/11/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html</loc>
+    <lastmod>2021-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://alexslive.top/posts/2020/11/15/%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html</loc>
-    <lastmod>2021-01-25</lastmod>
+    <loc>http://alexslive.top/posts/2020/11/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html</loc>
+    <lastmod>2021-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://alexslive.top/posts/2020/01/26/HBGary%E5%85%AC%E5%8F%B8.html</loc>
+    <lastmod>2021-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

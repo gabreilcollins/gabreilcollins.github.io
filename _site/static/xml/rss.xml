@@ -5,10 +5,17 @@
     <link>http://alexslive.top</link>
     <description>Gabe的个人博客</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 25 Jan 2021 18:01:16 +0800</pubDate>
-    <lastBuildDate>Mon, 25 Jan 2021 18:01:16 +0800</lastBuildDate>
+    <pubDate>Tue, 26 Jan 2021 20:11:48 +0800</pubDate>
+    <lastBuildDate>Tue, 26 Jan 2021 20:11:48 +0800</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     <atom:link href="http://alexslive.top/static/xml/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>杂凑表</title>
+      <link>http://alexslive.top/posts/2021/01/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%93%88%E5%B8%8C%E8%A1%A8.html</link>
+      <description>什么是杂凑表杂凑表是由元素和标识符一一对应的字符串的一个集合。为什么要进行杂凑能够对一个数据序列的访问过程更加迅速有效，通过散列函数，元素能更快的进行定位。基本概念散列函数：给定关键字k，其值存放在f(k)的存储位置上，其中对应关系f...</description>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0800</pubDate>
+      <gui>http://alexslive.top/posts/2021/01/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%93%88%E5%B8%8C%E8%A1%A8.html</gui>
+    </item>
     <item>
       <title>Web应用程序漏洞利用</title>
       <link>http://alexslive.top/posts/2021/01/18/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8.html</link>
@@ -18,17 +25,24 @@
     </item>
     <item>
       <title>进程通信</title>
-      <link>http://alexslive.top/posts/2020/11/18/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html</link>
+      <link>http://alexslive.top/posts/2020/11/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html</link>
       <description>什么是进程通信进程通信是指在进程间传输数据。进程通信根据交换信息量的多少和效率的高低，分为低级通信（只能传递状态和整数值）和高级通信（提高信号通信的效率，传递大量数据，减轻程序编制的复杂度）。其中高级进程通信分为三种方式：共享内存模式...</description>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0800</pubDate>
-      <gui>http://alexslive.top/posts/2020/11/18/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html</gui>
+      <gui>http://alexslive.top/posts/2020/11/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.html</gui>
     </item>
     <item>
       <title>进程控制</title>
-      <link>http://alexslive.top/posts/2020/11/15/%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html</link>
+      <link>http://alexslive.top/posts/2020/11/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html</link>
       <description>什么是进程进程的概念是操作系统中最基本、最重要的概念。在多道程序系统（单处理器下并发运行多程序）出现后，为了刻画系统内部出现的动态情况，描述系统内部各道程序的活动规律而引进的一个新概念：进程是一个可并发执行的具有独立功能的程序关于某个...</description>
       <pubDate>Sun, 15 Nov 2020 00:00:00 +0800</pubDate>
-      <gui>http://alexslive.top/posts/2020/11/15/%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html</gui>
+      <gui>http://alexslive.top/posts/2020/11/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.html</gui>
+    </item>
+    <item>
+      <title>HBGary公司</title>
+      <link>http://alexslive.top/posts/2020/01/26/HBGary%E5%85%AC%E5%8F%B8.html</link>
+      <description>入侵电脑，窃听用户，假身份上网——美国安全公司HBGary是电脑防护和间谍软件的供应商。而其客户中就有美国的国家安全机构。现在，该公司被偷的电子邮件可以让我们对其数字化战争中的业务做一个初步了解。去年六月，美国安全公司HBGary的一...</description>
+      <pubDate>Sun, 26 Jan 2020 00:00:00 +0800</pubDate>
+      <gui>http://alexslive.top/posts/2020/01/26/HBGary%E5%85%AC%E5%8F%B8.html</gui>
     </item>
   </channel>
 </rss>

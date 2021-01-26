@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>友情链接-Gabe Blog</title>
+  <title>杂凑表-Gabe Blog</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta http-equiv="content-language" content="zh-CN" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="applicable-device" content="pc,mobile">
   <meta name="google-site-verification" content="ckhUaoa05QCmWoE1FafzTBcqYI4yBOy-UJKopXDS18M" />
   <meta name="author" content="Gabe" />
-  <meta name="description" content="Gabe的个人博客"/>
-  <meta name="keywords" content="Gabe,C,C++,Python,CTF"/>
+  <meta name="description" content="杂凑表"/>
+  <meta name="keywords" content="Gabe,数据结构"/>
   <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon"/>
   <link rel="stylesheet" href="/static/css/common.css?t=20210126201148">
@@ -29,28 +29,51 @@
     </nav>
 </header>
 <div class="page page-post">
-  <h1 class="title" id="友情链接">友情链接</h1>
+  <h1 class="title" id="杂凑表">杂凑表</h1>
+  
+  <div class="subtitle">Gabe 于 2021-01-26 发布</div>
   
   <div class="post">
-    <p>欢迎各位朋友与我建立友链，如需友链请到<a href="chat.html">留言板</a>留言，我看到留言后会添加上的，本站的友链信息如下</p>
+    <h4 id="什么是杂凑表">什么是杂凑表</h4>
+<p>杂凑表是由元素和标识符一一对应的字符串的一个集合。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>名称：Gabe Blog
-描述：Gabe的个人博客
-地址：http://alexslive.top
-头像：http://alexslive.top/static/img/logo.jpg
-</code></pre></div></div>
+<h4 id="为什么要进行杂凑">为什么要进行杂凑</h4>
+<p>能够对一个数据序列的访问过程更加迅速有效，通过散列函数，元素能更快的进行定位。</p>
 
+<h4 id="基本概念">基本概念</h4>
 <ul>
-  <li>
-    <p><a href="https://ctf.bugku.com/challenges" title="" target="_blank">BugkuCTF</a></p>
+  <li>散列函数：给定关键字k，其值存放在f(k)的存储位置上，其中对应关系f，为散列函数。</li>
+  <li>散列：映射过程。</li>
+  <li>散列地址：散列函数所得的存储地址。</li>
+  <li>冲突（碰撞）：对不同的关键字可能会得到相同的散列地址，即k1!=k2，而f(k1)=f(k2)。</li>
+  <li>散列表：一个有限的连续的地址集合，将关键字k在地址集中的像作为记录在表中。</li>
+  <li>装载因子：α=填入表中元素个数/表长。</li>
+</ul>
+
+<h4 id="解决碰撞">解决碰撞</h4>
+<p>拉链法</p>
+
+<h4 id="常用散列方法">常用散列方法</h4>
+<ul>
+  <li>直接寻址法：
+    <ul>
+      <li>除法杂凑：h(k)=k mod m</li>
+      <li>乘法杂凑：m(kA mod 1)取底</li>
+      <li>全域杂凑：在一组杂凑函数中随机选取一个作为杂凑函数</li>
+    </ul>
   </li>
-  <li>
-    <p><a href="https://bbs.pediy.com/" title="" target="_blank">看雪论坛</a></p>
-  </li>
-  <li>
-    <p><a href="https://www.52pojie.cn/" title="" target="_blank">吾爱破解</a></p>
+  <li>开放地址法：hi=(h(k) + di) mod m,i=1,2,….,k&lt;=m-1.di为下列增量序列，有下列三种取法：
+    <ul>
+      <li>线性探测</li>
+      <li>二次探查</li>
+      <li>双重探查</li>
+    </ul>
   </li>
 </ul>
+
+<h4 id="课后习题">课后习题</h4>
+<p><strong>1.在超大规模数组上实现直接寻址字典的解决方案</strong>
+<strong>2.假设用一个随机的散列函数来将n个不同的关键字杂凑到一个长度为m的数组中，预期的碰撞数为多少？即{ (x,y):h(x)=h(y) }</strong></p>
 
   </div>
   
